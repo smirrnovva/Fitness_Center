@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>{% if client %}Редактировать клиента{% else %}Добавить клиента{% endif %}</h2>
+<form method="post">
+  <div class="mb-3">
+    <label class="form-label">ФИО</label>
+    <input name="full_name" class="form-control" value="{{ client.full_name if client }}" required>
+  </div>
+  <div class="mb-3">
+    <label class="form-label">Контакты</label>
+    <input name="contacts" class="form-control" value="{{ client.contacts if client }}" required>
+  </div>
+  <div class="mb-3">
+    <label class="form-label">Цель посещения</label>
+    <input name="goal" class="form-control" value="{{ client.goal if client }}">
+  </div>
+  <button type="submit" class="btn btn-success">Сохранить</button>
+  <a href="/clients" class="btn btn-secondary">Отмена</a>
+</form>
+{% endblock %}

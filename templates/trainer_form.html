@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>{% if trainer %}Редактировать тренера{% else %}Добавить тренера{% endif %}</h2>
+<form method="post">
+  <div class="mb-3">
+    <label class="form-label">ФИО</label>
+    <input name="full_name" class="form-control" value="{{ trainer.full_name if trainer }}" required>
+  </div>
+  <div class="mb-3">
+    <label class="form-label">Специализация</label>
+    <input name="specialization" class="form-control" value="{{ trainer.specialization if trainer }}" required>
+  </div>
+  <div class="mb-3">
+    <label class="form-label">График</label>
+    <textarea name="schedule" class="form-control">{{ trainer.schedule if trainer }}</textarea>
+  </div>
+  <button type="submit" class="btn btn-success">Сохранить</button>
+  <a href="/trainers" class="btn btn-secondary">Отмена</a>
+</form>
+{% endblock %}

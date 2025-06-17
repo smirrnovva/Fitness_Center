@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>{% if subscription %}Редактировать абонемент{% else %}Добавить абонемент{% endif %}</h2>
+<form method="post">
+  <div class="mb-3">
+    <label class="form-label">Клиент</label>
+    <select name="client_id" class="form-control" required>
+      {% for c in clients %}
+      <option value="{{ c.id }}" {% if subscription and subscription.client_id==c.id %}selected{% endif %}>{{ c.full_name }}</option>
+      {% endfor %}
+    </select>
+  </div>
+  <div class="mb-3">
+    <label class="form-label">Тип абонемента</label>
+    <input name="type" class="form-control" value="{{ subscription.type if subscription }}" required>
+  </div>
+  <div class="mb-3">
+    <label class="form-label">Срок действия (YYYY-MM-DD)</label>
+    <input type="date" name="valid_until" class="form-control" value="{{ subscription.valid_until if subscription }}" required>
+  </div>
+  <button type="submit" class="btn btn-success">Сохранить</button>
+  <a href="/subscriptions" class="btn btn-secondary">Отмена</a>
+</form>
+{% endblock %}

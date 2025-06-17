@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Абонементы</h2>
+<a href="/subscriptions/add" class="btn btn-success mb-2">Добавить абонемент</a>
+<table class="table table-striped">
+  <thead><tr><th>ID</th><th>Клиент</th><th>Тип</th><th>До</th><th>Статус</th><th>Действия</th></tr></thead>
+  <tbody>
+    {% for s in subscriptions %}
+    <tr>
+      <td>{{ s.id }}</td>
+      <td>{{ s.client.full_name }}</td>
+      <td>{{ s.type }}</td>
+      <td>{{ s.valid_until }}</td>
+      <td>{{ 'активен' if s.is_active() else 'истёк' }}</td>
+      <td>
+        <a href="/subscriptions/edit/{{ s.id }}" class="btn btn-sm btn-warning">Редактировать</a>
+        <a href="/subscriptions/delete/{{ s.id }}" class="btn btn-sm btn-danger">Удалить</a>
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}
