@@ -1,5 +1,5 @@
 Таблица №1 с Клиентами
-pictures/photo_2025-06-11_10-09-42.jpg
+https://raw.githubusercontent.com/smirnowa/Fitness_Center/commit/photo_2025-06-11_10-09-42.jpg
 Таблица №2 с Тренерами
 pictures/photo_2025-06-11_10-09-56.jpg
 Таблица №3 с Абонементами
